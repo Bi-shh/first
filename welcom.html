@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Love Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('black-and-white-scenery-with-the-moon-zm19605amj4kd8lh.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      overflow-y: auto;
+      max-height: 90vh;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button, .btn {
+      padding: 14px 24px;
+      background: #ff4081;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover, .btn:hover {
+      background-color: #e73370;
+    }
+
+    .link {
+      margin-top: 15px;
+    }
+
+    .link a {
+      color: #2575fc;
+      text-decoration: none;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .memory-card {
+      background: #fff;
+      margin: 15px 0;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+
+    .memory-card img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login Section -->
+  <div class="container" id="loginSection">
+    <h2>Login</h2>
+    <div class="error-message" id="error-msg"></div>
+    <input type="text" id="username" placeholder="Username" required />
+    <input type="password" id="password" placeholder="Password" required />
+    <button onclick="login()">Login</button>
+    <div class="link">
+      <p>Don't have an account? <a href="#">Register</a></p>
+    </div>
+  </div>
+
+  <!-- Welcome Section -->
+  <div class="container hidden" id="welcomeSection">
+    <h1>Welcome, My Love 💖</h1>
+    <p>I’ve made a little surprise for you...<br>Click below to see your memories 💌</p>
+    <button onclick="showMemories()">Enter Your Memories</button>
+  </div>
+
+  <!-- Memories Section -->
+  <div class="container hidden" id="memoriesSection">
+    <div id="quizSection">
+      <h2>Final Quiz 💭</h2>
+
+      <div id="question1">
+        <p><strong>1. Where did we go on our first date?</strong></p>
+        <button class="btn" onclick="chooseOption(1, 'A')">A. Pizza Hut</button>
+        <button class="btn" onclick="chooseOption(1, 'B')">B. Bamboo Cafe</button>
+        <button class="btn" onclick="chooseOption(1, 'C')">C. Movie Theater</button>
+        <div id="submit1" class="hidden">
+          <button class="btn" onclick="submitAnswer(1)">Submit Answer</button>
+        </div>
+      </div>
+
+      <div id="question2" style="margin-top: 20px;">
+        <p><strong>2. Who is famous for vlog?</strong></p>
+        <button class="btn" onclick="chooseOption(2, 'A')">A. Sadikxhya</button>
+        <button class="btn" onclick="chooseOption(2, 'B')">B. Dristi</button>
+        <button class="btn" onclick="chooseOption(2, 'C')">C. Aaysha</button>
+        <div id="submit2" class="hidden">
+          <button class="btn" onclick="submitAnswer(2)">Submit Answer</button>
+        </div>
+      </div>
+
+      <div id="question3" style="margin-top: 20px;">
+        <p><strong>3. Who seems more urge for the face care?</strong></p>
+        <button class="btn" onclick="chooseOption(3, 'A')">A. Praptyy(Darl's)</button>
+        <button class="btn" onclick="chooseOption(3, 'B')">B. Aaysha</button>
+        <button class="btn" onclick="chooseOption(3, 'C')">C. Dristi and Sadikxhya</button>
+        <div id="submit3" class="hidden">
+          <button class="btn" onclick="submitAnswer(3)">Submit Answer</button>
+        </div>
+      </div>
+
+      <div class="error-message" id="quiz-error"></div>
+    </div>
+
+    <!-- Memory Buttons -->
+    <div id="memoryButtons" class="hidden" style="margin-top: 30px;">
+      <!-- Memory 1 -->
+      <button onclick="toggleMemory('mem1')">🌸 Show Memory 1 – First Day We Met</button>
+      <div id="mem1" class="memory-card hidden">
+        <strong>🌸 First Day Being Together - 29 July</strong>
+        <p>That smile you gave me, I still remember it!</p>
+        <img src="image.jpg" alt="Memory 1">
+      </div>
+
+      <!-- Memory 2 -->
+      <button onclick="toggleMemory('mem2')">💌 Show Memory 2 – Special Message</button>
+      <div id="mem2" class="memory-card hidden">
+        <strong>💌 Special Message</strong>
+        <p>Hey baby,<br>
+          I miss you more than words can say. Being away from you isn’t easy, but my love for you grows stronger every single day. Even though we’re far apart, my heart is always with you.I think about your smile, your voice, and all the little things that make you you. I can't wait for the day I can hug you tight and never let go.
+          Distance may keep us apart for now, but nothing can stop the love I feel for you. I’ll wait for you, fight for you, and love you with all my heart—no matter how far we are.
+          Forever yours,
+          Bishh <br> Bishh.</p>
+      </div>
+
+      <!-- Memory 3 -->
+      <button onclick="toggleMemory('mem3')">🎂 Show Memory 3 – Birthday Surprise</button>
+      <div id="mem3" class="memory-card hidden">
+        <strong>🎂 Do you want to hear something?</strong>
+        <p>I hope your birthday was as amazing as you are! This boy is always going to stand behind your back to support you on each step of life.</p>
+        <img src="image1.jpg" alt="Memory 2">
+        
+        <!-- 🎵 Audio Player -->
+        <div style="margin-top: 15px;">
+          <audio controls>
+            <source src="song.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+      </div>
+
+      <!-- 🎥 Video Section -->
+      <div style="margin-top: 30px;">
+        <p><strong>🎥 A video memory for you...</strong></p>
+        <video width="100%" controls>
+          <source src="video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const errorMsg = document.getElementById('error-msg');
+
+      if (username === "Darl's" && password === "0107") {
+        document.getElementById('loginSection').classList.add('hidden');
+        document.getElementById('welcomeSection').classList.remove('hidden');
+        errorMsg.innerText = '';
+      } else {
+        errorMsg.innerText = 'Invalid username or password.';
+      }
+    }
+
+    function showMemories() {
+      document.getElementById('welcomeSection').classList.add('hidden');
+      document.getElementById('memoriesSection').classList.remove('hidden');
+    }
+
+    const selectedAnswers = {};
+    const correctAnswers = {
+      1: 'B',
+      2: 'C',
+      3: 'A'
+    };
+    const submittedAnswers = {
+      1: false,
+      2: false,
+      3: false
+    };
+
+    function chooseOption(questionNum, option) {
+      selectedAnswers[questionNum] = option;
+      document.getElementById(`submit${questionNum}`).classList.remove('hidden');
+    }
+
+    function submitAnswer(questionNum) {
+      const quizError = document.getElementById('quiz-error');
+
+      if (selectedAnswers[questionNum] === correctAnswers[questionNum]) {
+        submittedAnswers[questionNum] = true;
+        document.getElementById(`question${questionNum}`).classList.add('hidden');
+        quizError.innerText = '';
+        checkAllAnswers();
+      } else {
+        quizError.innerText = `Oops! Question ${questionNum} is not quite right. Try again 💕`;
+      }
+    }
+
+    function checkAllAnswers() {
+      const allCorrect = Object.values(submittedAnswers).every(val => val === true);
+      if (allCorrect) {
+        document.getElementById('quizSection').classList.add('hidden');
+        document.getElementById('memoryButtons').classList.remove('hidden');
+      }
+    }
+
+    function toggleMemory(memId) {
+      const mem = document.getElementById(memId);
+      mem.classList.toggle('hidden');
+    }
+  </script>
+
+</body>
+</html>
